@@ -11,7 +11,7 @@
 
 ## Scope and non-goals
 
-v1 includes Kerala income certificate, one state still to be selected for income certificate, learner/permanent driving licence, JEE Main registration, and passport. It provides preparation guidance—not application submission.
+v1 includes Kerala and Tamil Nadu income certificates, learner/permanent driving licence, JEE Main registration, and passport. It provides preparation guidance—not application submission.
 
 Non-goals: collecting documents or ID numbers; uploading identity documents; submitting government forms; legal advice; eligibility determination beyond declared facts and explicit rules; live government-portal automation; and a general-purpose chatbot.
 
@@ -66,9 +66,27 @@ uploadSpecs:
 
 The example intentionally contains no government requirement. `requiredWhen` uses a constrained expression language over reviewed intake answers; it cannot execute code. A schema validator requires sources, `lastVerified`, translations, and source references for all externally visible factual rules.
 
+### `requiredWhen` expression grammar
+
+Conditions are parsed, not evaluated as JavaScript. Whitespace may appear between tokens.
+
+```text
+expression   ::= orExpression
+orExpression ::= andExpression ( "||" andExpression )*
+andExpression::= unaryExpression ( "&&" unaryExpression )*
+unaryExpression ::= "!" unaryExpression | primary
+primary      ::= "true" | "false" | comparison | "(" expression ")"
+comparison   ::= identifier ( "==" | "!=" ) literal
+identifier   ::= /[a-z][a-z0-9_]* /
+literal      ::= string | "true" | "false"
+string       ::= "'" characters "'"
+```
+
+An `identifier` must exactly match a declared intake-question ID; string literals must exactly match an allowed option value for that question. Boolean literals are permitted only for boolean questions. No property access, arrays, arithmetic, functions, regex, implicit coercion, or undeclared identifiers are allowed. Invalid expressions fail schema validation at build time; evaluation is deterministic and side-effect free.
+
 ## Readiness Score
 
-Start with 100. Generate applicable checklist obligations first, then deduct unresolved weighted items: critical 25, high 15, standard 8 (cap aggregate deductions at 100). Apply issue penalties only once per underlying issue: expired or wrong-period evidence 20, declared name mismatch 15, category mismatch 20, upload-spec violation 10, and required fee/budget not ready 10. The final score is `max(0, 100 - deductions)`.
+Keep score policy in a versioned scoring-config file, not UI code. Start with 100. Generate applicable checklist obligations first, then deduct unresolved weighted items: critical 25, high 15, standard 8 (cap aggregate deductions at 100). Apply issue penalties only once per underlying issue: expired or wrong-period evidence 20, declared name mismatch 15, category mismatch 20, upload-spec violation 10, and required fee/budget not ready 10. The base score is `max(0, 100 - deductions)`. If any applicable critical item is missing, the final score is capped at 60 and the status is `not ready`; otherwise status is derived from the configured score bands.
 
 The UI must show the equation in human terms: fulfilled items, missing items, issues, deductions, and the ordered actions that recover points. A score is preparation readiness, not approval probability or eligibility. Values are initial product policy and must be covered by fixtures before implementation.
 

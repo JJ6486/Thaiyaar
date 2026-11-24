@@ -4,11 +4,11 @@
 
 Taiyaar is a mobile-first India document-readiness assistant. It helps a person prepare *before* applying for a service by turning a selected, structured procedure and their answers into a sourced, personalised checklist and explainable Readiness Score. It is a rules engine, not a chatbot.
 
-v1 procedures: income certificate (Kerala and one additional state to be chosen), driving licence (learner and permanent), JEE Main registration, and passport. Never present unverified government requirements as fact.
+v1 procedures: income certificate (Kerala and Tamil Nadu), driving licence (learner and permanent), JEE Main registration, and passport. Never present unverified government requirements as fact. Jinash Jaleel is the designated reviewer for substantive procedure-data and freshness changes.
 
 ## Recommended stack
 
-Next.js (static-first) + TypeScript + React, Tailwind CSS, Zod, Vitest, Playwright, and i18next. Procedures are versioned YAML/JSON content compiled and validated at build time. See `docs/ARCHITECTURE.md` before implementation.
+Next.js (static-first) + TypeScript + React, Tailwind CSS, Zod, Vitest, Playwright, and i18next, deployed on Vercel. Procedures are versioned YAML/JSON content compiled and validated at build time. See `docs/ARCHITECTURE.md` before implementation.
 
 ## Planned repository layout
 
@@ -54,7 +54,7 @@ A change is done when it is scoped, typed, linted, tested, accessible at mobile 
 - Every requirement, condition, fee, validity constraint, and upload specification needs a direct official `sourceUrl` and `lastVerified` date.
 - Include source title, stable rule/item ID, jurisdiction, effective/version metadata where known, and a review note when wording is ambiguous.
 - Do not infer a rule from an unofficial summary. If official material is unavailable or unclear, mark it `TO VERIFY` and exclude it from definitive checklist/scoring behaviour until reviewed.
-- Update fixtures and rules/scoring tests with every data change. The freshness checker only flags possible change; a human approves substantive updates.
+- Update fixtures and rules/scoring tests with every data change. The freshness checker only flags possible change; Jinash Jaleel approves substantive updates.
 
 ## Privacy and safety
 

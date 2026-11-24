@@ -2,15 +2,15 @@
 
 The project remains data-first: no procedure is called complete until it has reviewed sources, a schema-valid data file, rules/scoring fixtures, translations, and a human review record.
 
-| Stage | Timing and milestone | Recommended model / effort | Parallel work |
-| --- | --- | --- | --- |
-| Spec | Week 1, days 1–2: confirm procedures, second income-certificate state, score policy, privacy notice, and source-review workflow | Strong reasoning model / high — decisions constrain all downstream work | Procedure source inventory can begin after jurisdictions are chosen |
-| Design | Week 1, days 2–4: wireframes, accessibility/i18n content plan, schema, rule expression grammar, test/eval design approved | Strong reasoning model / high — architecture and failure modes matter | UX wireframes; dataset schema fixtures; source inventory |
-| Implementation | Week 1 end–Week 2: static app shell, local storage, deterministic engine, scoring UI, i18n, first procedures | Feature-capable model / medium — bounded implementation with tests | UI shell; rules engine; individual reviewed procedure files |
-| Testing | Week 2 end: unit/integration tests, mobile E2E, accessibility pass, AI adapter mocks and eval set | Strong reasoning model / high — catches non-obvious correctness and safety gaps | Rules/scoring tests; E2E/accessibility; AI evaluations |
-| Review | Week 3, days 1–2: content/source review, privacy review, score calibration, Hindi copy review | Strong reasoning model / high — published guidance needs careful judgement | Content review; UX review; technical threat/privacy review |
-| Deploy | Week 3, days 3–4: CI, static-host preview, production checklist, source/version display | Feature-capable model / medium — operational integration | CI/deployment; release notes; final smoke test |
-| Maintenance | Week 3 day 5 onward: scheduled freshness checker, reviewer triage, issue templates, periodic regression runs | Boilerplate model / low for scripts; strong reasoning model / high for flagged-source decisions | Automation setup; documentation; reviewer runbook |
+| Stage | Timing and milestone | Recommended model / effort | Parallel work | Codex features |
+| --- | --- | --- | --- | --- |
+| Spec | Week 1, days 1–2: confirm procedures, Tamil Nadu source inventory, score policy, privacy notice, and source-review workflow | Strong reasoning model / high — decisions constrain all downstream work | Procedure source inventory can begin after jurisdictions are chosen | Documentation skill for planning artifacts; parallel tasks for source inventory; code review for schema/data decisions |
+| Design | Week 1, days 2–4: wireframes, accessibility/i18n content plan, schema, rule expression grammar, test/eval design approved | Strong reasoning model / high — architecture and failure modes matter | UX wireframes; dataset schema fixtures; source inventory | Visualize skill for flow/wireframe exploration; parallel tasks for UX and schema; code review before lock-in |
+| Implementation | Week 1 end–Week 2: static app shell, local storage, deterministic engine, scoring UI, i18n, first procedures | Feature-capable model / medium — bounded implementation with tests | UI shell; rules engine; individual reviewed procedure files | Parallel tasks for independent modules; code review on engine and privacy boundaries; relevant skills only where they fit |
+| Testing | Week 2 end: unit/integration tests, mobile E2E, accessibility pass, AI adapter mocks and eval set | Strong reasoning model / high — catches non-obvious correctness and safety gaps | Rules/scoring tests; E2E/accessibility; AI evaluations | Parallel tasks for test tracks; code review for failures and regressions |
+| Review | Week 3, days 1–2: content/source review, privacy review, score calibration, Hindi copy review | Strong reasoning model / high — published guidance needs careful judgement | Content review; UX review; technical threat/privacy review | Code review for implementation/data diffs; parallel tasks for independent reviews |
+| Deploy | Week 3, days 3–4: CI, Vercel preview, production checklist, source/version display | Feature-capable model / medium — operational integration | CI/deployment; release notes; final smoke test | Code review before merge; Vercel preview verification; parallel tasks for release notes and smoke test |
+| Maintenance | Week 3 day 5 onward: scheduled freshness checker, reviewer triage, issue templates, periodic regression runs | Boilerplate model / low for scripts; strong reasoning model / high for flagged-source decisions | Automation setup; documentation; reviewer runbook | Automations for scheduled freshness/reporting; code review for rule changes; parallel tasks for investigation when sources change |
 
 ## Weekly milestones
 
